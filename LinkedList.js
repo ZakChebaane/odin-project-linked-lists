@@ -119,6 +119,42 @@ export class LinkedList {
         }
     }
     findIndex(value) {
-        
+        let currNode = this.head;
+        let index = 1;
+        let traverse = true;
+        if (!this.head) {
+            return -1;
+        }
+        while (traverse) {
+            if (currNode.nextNode) {
+                if (currNode.value === value) {
+                    return index;
+                }
+                currNode = currNode.nextNode;
+                index++;
+            } else if (!currNode.nextNode) {
+                if (currNode.value === value) {
+                    return index;
+                } else {
+                    return -1;
+                }
+            }
+        }
+    }
+    toString() {
+        let currNode = this.head;
+        let listStr = "";
+        if (!this.head) {
+            return "";
+        }
+        while (1) {
+            if (currNode.nextNode) {
+                listStr += `( ${currNode.value} ) -> `;
+                currNode = currNode.nextNode;
+            } else if (!currNode.nextNode) {
+                listStr += `( ${currNode.value} ) -> null`;
+                return listStr;
+            }
+        }
     }
 };
