@@ -157,4 +157,42 @@ export class LinkedList {
             }
         }
     }
-};
+    insertAt(index, ...values) {
+        let currNode = this.head;
+
+        if (!this.head) {
+            return undefined;
+        } else if (index === 0) {console.error("Index out of range")}
+        while(index > 0) {
+            if (index === 1) {
+                const nextListNode = currNode.nextNode;
+                for (let i = 0; i < values.length; i++) {
+                    currNode.nextNode = new Node(values[i]);
+                    currNode = currNode.nextNode;
+                }
+                currNode.nextNode = nextListNode;
+                index--;
+            } else if (currNode.nextNode) {
+                currNode = currNode.nextNode;
+                index--;
+            } else if (!currNode.nextNode) {
+                return console.error("Index out of range");
+            }
+        }
+    }
+    removeAt(index) {
+        let currNode = this.head;
+        if (!this.head) { return undefined } else if (index === 0) { return console.error("Index out of range") }
+        while(1) {
+            if (index === 2 && currNode.nextNode) {
+                currNode.nextNode = currNode.nextNode.nextNode;
+                return;
+            } else if (!currNode.nextNode) {
+                return console.error("Index out of range");
+            } else if (currNode.nextNode) {
+                currNode = currNode.nextNode;
+                index--;
+            }
+        }
+    }
+}

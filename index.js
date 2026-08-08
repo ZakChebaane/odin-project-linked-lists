@@ -12,3 +12,5 @@ myLinkedList.prepend(1);
 
 // console.log(myLinkedList.findIndex(2));
 console.log(myLinkedList.toString());
+myLinkedList.removeAt(4);
+console.log(myLinkedList.toString());
